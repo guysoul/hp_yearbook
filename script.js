@@ -1,7 +1,5 @@
-const gryffindorContainer = document.querySelector(".gryffindor-container");
+const studentContainer = document.querySelector(".student-container");
 const addBtnGryffindor = document.getElementById("add-btn-gryffindor");
-
-const ravenclawContainer = document.querySelector(".ravenclaw-container");
 const addBtnRavenclaw = document.getElementById("add-btn-ravenclaw");
 
 let hogwartsStudents;
@@ -45,7 +43,7 @@ async function fetchAndShowStudentRavenclaw() {
 
 //Read to show gryffindor students
 function showAllGryffindor() {
-  gryffindorContainer.innerHTML = "";
+  studentContainer.innerHTML = "";
 
   hogwartsStudents
     .filter((gryffindorMember) => gryffindorMember.house === "Gryffindor")
@@ -60,8 +58,15 @@ function showAllGryffindor() {
         deleteStudentGryffindor(index);
       });
 
-      gryffindorCard.innerHTML = `<img src="${gryffindorMember.image}" style="width: 100px"/> <h3>${gryffindorMember.name}</h3>`;
-      gryffindorContainer.append(gryffindorCard);
+      let gryffindorAge = gryffindorMember.yearOfBirth;
+      if (gryffindorAge == null) {
+        gryffindorAge = "Unknown";
+      } else {
+        gryffindorAge = 2023 - gryffindorAge;
+      }
+
+      gryffindorCard.innerHTML = `<img src="${gryffindorMember.image}" style="width: 100px"/> <h3>${gryffindorMember.name}</h3><h2>${gryffindorAge}</h2>`;
+      studentContainer.append(gryffindorCard);
       gryffindorCard.append(deleteBtn);
       console.log(gryffindorMember.name);
     });
@@ -69,7 +74,7 @@ function showAllGryffindor() {
 
 //Read to show ravenclaw Students
 function showAllRavenclaw() {
-  ravenclawContainer.innerHTML = "";
+  studentContainer.innerHTML = "";
 
   hogwartsStudents
     .filter((ravenclawMember) => ravenclawMember.house === "Ravenclaw")
@@ -85,7 +90,7 @@ function showAllRavenclaw() {
       });
 
       ravenclawCard.innerHTML = `<img src="${ravenclawMember.image}" style="width: 100px"/> <h3>${ravenclawMember.name}</h3>`;
-      ravenclawContainer.append(ravenclawCard);
+      studentContainer.append(ravenclawCard);
       ravenclawCard.append(deleteBtn);
       console.log(ravenclawMember.name);
     });
