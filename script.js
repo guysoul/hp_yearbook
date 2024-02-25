@@ -65,7 +65,7 @@ function showAllGryffindor() {
         gryffindorAge = 2023 - gryffindorAge;
       }
 
-      gryffindorCard.innerHTML = `<img src="${gryffindorMember.image}" style="width: 100px"/> <h3>${gryffindorMember.name}</h3><h2>${gryffindorAge}</h2>`;
+      gryffindorCard.innerHTML = `<img src="${gryffindorMember.image}" style="width: 100px"/> <h3>${gryffindorMember.name}</h3><h4>${gryffindorAge}</h4>`;
       studentContainer.append(gryffindorCard);
       gryffindorCard.append(deleteBtn);
       console.log(gryffindorMember.name);
@@ -89,7 +89,14 @@ function showAllRavenclaw() {
         deleteStudentRavenclaw(index);
       });
 
-      ravenclawCard.innerHTML = `<img src="${ravenclawMember.image}" style="width: 100px"/> <h3>${ravenclawMember.name}</h3>`;
+      let ravenclawAge = ravenclawMember.yearOfBirth;
+      if (ravenclawAge == null) {
+        ravenclawAge = "Unknown";
+      } else {
+        ravenclawAge = 2023 - ravenclawAge;
+      }
+
+      ravenclawCard.innerHTML = `<img src="${ravenclawMember.image}" style="width: 100px"/> <h3>${ravenclawMember.name}</h3><h4>${ravenclawAge}</h4>`;
       studentContainer.append(ravenclawCard);
       ravenclawCard.append(deleteBtn);
       console.log(ravenclawMember.name);
