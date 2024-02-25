@@ -17,11 +17,22 @@ async function fetchStudent() {
 
 console.log(fetchStudent());
 
-async function fetchAndShowStudent() {
+async function fetchAndShowStudentGryffindor() {
   try {
     hogwartsStudents = await fetchStudent();
 
     showAllGryffindor();
+
+    console.log("Inside fetchAndShowStudent function", hogwartsStudents);
+  } catch (error) {
+    console.log("unable to load Hogwarts Student", error);
+  }
+}
+
+async function fetchAndShowStudentRavenclaw() {
+  try {
+    hogwartsStudents = await fetchStudent();
+
     showAllRavenclaw();
 
     console.log("Inside fetchAndShowStudent function", hogwartsStudents);
@@ -94,5 +105,5 @@ function deleteStudentRavenclaw(index) {
   showAllRavenclaw();
 }
 
-addBtnGryffindor.onclick = fetchAndShowStudent;
-addBtnRavenclaw.onclick = fetchAndShowStudent;
+addBtnGryffindor.onclick = fetchAndShowStudentGryffindor;
+addBtnRavenclaw.onclick = fetchAndShowStudentRavenclaw;
